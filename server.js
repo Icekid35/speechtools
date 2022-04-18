@@ -42,7 +42,7 @@ function spwarn() {
     if(totalworkers==3) return
   var worker1 = Tesseract.createWorker({
     
-    langPath: "libs",
+    //langPath: "libs",
   })
 
   worker1.load().then(() => {
