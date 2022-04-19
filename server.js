@@ -99,7 +99,6 @@ worker.load().then(() => {
   
 // // })
 //}else{
-startworker()
 
       app.listen(process.env.PORT, () => {
         console.log(`your app is up and running on port = ${process.env.PORT} pid=${process.pid}`)
