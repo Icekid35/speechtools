@@ -92,20 +92,20 @@ worker.load().then(() => {
         res.sendStatus(404)
       })
       if (process.env.PORT){
-if(cluster.isMaster){
+// if(cluster.isMaster){
   
-// require('os').cpus().forEach(function(){
-//   startworker()
+// // require('os').cpus().forEach(function(){
+// //   startworker()
   
-// })
+// // })
+//}else{
 startworker()
-}else{
 
       app.listen(process.env.PORT, () => {
         console.log(`your app is up and running on port = ${process.env.PORT} pid=${process.pid}`)
       
       })
-}
+//}
 }else{
               app.listen(8080, () => {
         console.log(`your app is up and running on port  8080`)
