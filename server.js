@@ -60,7 +60,7 @@ function spwarn() {
 
 const worker = Tesseract.createWorker({
   logger: (e) => console.log(e),
-  langPath: "libs",
+  //langPath: "libs",
 })
 
 worker.load().then(() => {
