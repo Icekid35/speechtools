@@ -94,14 +94,15 @@ worker.load().then(() => {
       if (process.env.PORT){
 if(cluster.isMaster){
   
-require('os').cpus().forEach(function(){
-  startworker()
+// require('os').cpus().forEach(function(){
+//   startworker()
   
-})
+// })
+startworker()
 }else{
 
       app.listen(process.env.PORT, () => {
-        console.log(`your app is up and running on port  ${process.env.PORT} ${process.pid}`)
+        console.log(`your app is up and running on port = ${process.env.PORT} pid=${process.pid}`)
       
       })
 }
