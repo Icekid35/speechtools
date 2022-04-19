@@ -52,7 +52,7 @@ function spwarn() {
   console.log("total workers available is now " + totalworkers)
 
         scheduler.addWorker(worker1)
-        spwarn()
+        //spwarn()
       })
     })
   })
