@@ -92,6 +92,7 @@ worker.load().then(() => {
         res.sendStatus(404)
       })
       if (process.env.PORT){
+        //* i wont be using this now because it cost is really high to host , but it's very useful to speed up conversation
 // if(cluster.isMaster){
   
 // // require('os').cpus().forEach(function(){
