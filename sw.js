@@ -24,16 +24,16 @@ self.addEventListener('install',e=>{
        '/speech-to-text.html',
        'ios/1024.png',
 '/loading.gif',
-'node_modules/tesseract.js/dist/tesseract.min.js',
+'libs/tesseract.js/dist/tesseract.min.js',
        '/libs/react.min.js',
       'maskable_icon.png',
 '/libs/react-dom.min.js',
 '/libs/babel.min.js',
-   'node_modules/tesseract.js/dist/worker.min.js',
+   'libs/tesseract.js/dist/worker.min.js',
        'libs',
        'speech-to-text.js',
 'speech-to-text.html',
-'node_modules/tesseract.js-core/tesseract-core.wasm.js'
+'libs/tesseract.js-core/tesseract-core.wasm.js'
      ]) 
     })
     )
