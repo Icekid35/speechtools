@@ -28,24 +28,6 @@ let  file=e.target.file.files[0]
   
   imagesrc=URL.createObjectURL(file)
   
-  /* var worker=Tesseract.recognize(file,'eng',{
-      logger:e=>{
-
-      textholder.innerHTML= `<span class='blue' >status </span>:<span class='green'>${e.status}</span><br /><span class='blue' >progress </span>:<span class='green'>${e.progress}</span>
-   ` }}
-    ).then((value)=>{
-  
-    val=value
-          textholder.innerHTML=`<h2 class='blue' >confidence</h2>:<span class='green'>${value.data.confidence}💪</span>
-         <br />
-           <br />
-         <h2 class='blue' >text </h2>:<span class='green'>${value.data.text}</span>
-           <br />
-           <br />
-          <h2 class='blue' >hocr</h2>:<span class='green'>${value.data.hocr}</span>
-      `})
-
-*/
 
  const worker=Tesseract.createWorker({
    workerPath:'node_modules/tesseract.js/dist/worker.min.js',
@@ -88,7 +70,7 @@ render()
      form.append('file',file)
      val={status:'loading'}
      render()
-     fetch('/',{
+     fetch('http://speechtools.herokuapp.com/',{
        method:'POST',
      body:form,
        

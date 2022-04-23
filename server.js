@@ -5,7 +5,7 @@ const Tesseract = require("tesseract.js")
 const multer = require("multer")
 const cluster=require('cluster')
 
-
+app.use(require('cors')())
 function startworker(){
   var worker=cluster.fork()
   console.log('cluster: worker %d started')

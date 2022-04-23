@@ -6,12 +6,12 @@ self.addEventListener('install',e=>{
        '/home.js',
      '/manifest.json',
      '/index.html',
-     '/text-to-speech',
+     '/text-to-speech.html',
      '/text-to-speech.png',
      '/image-to-speech.png',
-     '/image-to-speech',
+     '/image-to-speech.html',
      '/image-to-text.png',
-       '/image-to-text',
+       '/image-to-text.html',
        '/text-to-speech.js',
        '/image-to-speech.js',
      'ios/144.png',
@@ -21,7 +21,7 @@ self.addEventListener('install',e=>{
      'libs/eng.traineddata.gz',
 '/style.js',
 '/nav.js',
-       '/speech-to-text',
+       '/speech-to-text.html',
        'ios/1024.png',
 '/loading.gif',
 'node_modules/tesseract.js/dist/tesseract.min.js',
@@ -32,7 +32,7 @@ self.addEventListener('install',e=>{
    'node_modules/tesseract.js/dist/worker.min.js',
        'libs',
        'speech-to-text.js',
-'speech-to-text',
+'speech-to-text.html',
 'node_modules/tesseract.js-core/tesseract-core.wasm.js'
      ]) 
     })

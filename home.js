@@ -27,7 +27,7 @@ function App() {
      alignItems:'center',
      textTransform:'uppercase',
      paddingTop:10
-   }}><a className='blue' href={service.name}>
+   }}><a className='blue' href={service.name+'.html'}>
    <h3 className='blue' style={{
      marginTop:0,
      paddingTop:0,
