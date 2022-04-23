@@ -21,7 +21,7 @@ self.addEventListener('install',e=>{
      'libs/eng.traineddata.gz',
 '/style.js',
 
-       '/speech-to-text.html',
+       
        'ios/1024.png',
 '/loading.gif',
 'libs/tesseract.js/dist/tesseract.min.js',
