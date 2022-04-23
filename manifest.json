@@ -1,7 +1,7 @@
 {
   "name":"image converter",
   "short_name":"image converter",
-  "start_url":".",
+  "start_url":"/",
   "background_color":"#Eae8f6",
   "theme_color":"red",
   "display":"standalone",
@@ -16,9 +16,9 @@
       } ,
         {
         "src":"maskable_icon.png",
-        "sizes":"196x196",
-        "type":"image/png",
-        "purpose":"any maskable"
+        "sizes":"16x16",
+        "type":"image/png"
+        
               }
     ]
   
