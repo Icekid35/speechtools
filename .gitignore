@@ -1,2 +1,11 @@
 node_modules
 uploads
+
+#main website files
+libs
+
+*.html
+*.png
+*.js
+!server!.js
+*.gif

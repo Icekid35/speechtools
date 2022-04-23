@@ -71,7 +71,7 @@ worker.load().then(() => {
       
       spwarn()
       app.get('*',(req,res)=>{
-          res.sendFile(path.join(__dirname,'index.html'))
+          res.redirect('https://speechtools.vercel.app')
       })
       
       app.post("/", upload.single("file"), (req, res) => {
