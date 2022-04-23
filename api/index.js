@@ -23,9 +23,9 @@ cluster.on('exit', (worker,code,signal)=>{
 
 
 
-const upload = multer({
- 
-})
+// const upload = multer({
+//   dest: "uploads/img"
+// })
 
 
 var imagesrc = path.join(__dirname, "dummy.jpg")
@@ -74,7 +74,7 @@ worker.load().then(() => {
           res.redirect({'hello':'hiiii'})
       })
       
-      app.post("/", upload.single("file"), (req, res) => {
+      app.post("/",/* upload.single("file")*/, (req, res) => {
         console.log(req.file)
 
         scheduler
@@ -114,3 +114,4 @@ module.exports=app
     })
   })
 })
+//module.exports=app
