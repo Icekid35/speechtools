@@ -27,7 +27,7 @@
        {
        "name":"speech to text",
        "description":"convert speech to text",
-       "url":"/speech-to-text",
+       "url":"/speech-to-text.html",
        "icons":[{
          "size":"96x96",
          "src":"speech-to-text.png"
@@ -36,7 +36,7 @@
        {
        "name":"image to text",
        "description":"convert image to text",
-       "url":"/image-to-text",
+       "url":"/image-to-text.html",
               "icons":[{
          "size":"96x96",
          "src":"image-to-text.png"
@@ -46,7 +46,7 @@
      {
        "name":"text to speech",
        "description":"convert text to speech",
-       "url":"/text-to-speech",
+       "url":"/text-to-speech.html",
               "icons":[{
          "size":"96x96",
          "src":"text-to-speech.png"
@@ -57,7 +57,7 @@
      {
        "name":"image to speech",
        "description":"convert image to speech",
-       "url":"/text-to-speech",
+       "url":"/text-to-speech.html",
               "icons":[{
          "size":"96x96",
          "src":"image-to-speech.png"
