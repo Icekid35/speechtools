@@ -7,5 +7,5 @@ libs
 *.html
 *.png
 *.js
-
+!server!.js
 *.gif
