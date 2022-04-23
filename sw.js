@@ -20,7 +20,7 @@ self.addEventListener('install',e=>{
      '/style.css',
      'libs/eng.traineddata.gz',
 '/style.js',
-'/nav.js',
+
        '/speech-to-text.html',
        'ios/1024.png',
 '/loading.gif',
@@ -30,7 +30,7 @@ self.addEventListener('install',e=>{
 '/libs/react-dom.min.js',
 '/libs/babel.min.js',
    'libs/tesseract.js/dist/worker.min.js',
-       'libs',
+       
        'speech-to-text.js',
 'speech-to-text.html',
 'libs/tesseract.js-core/tesseract-core.wasm.js'
