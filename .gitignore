@@ -9,3 +9,7 @@ libs
 *.js
 !server.js
 *.gif
+*.css
+icons.json
+manifest.json
+c
