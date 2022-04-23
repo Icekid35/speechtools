@@ -68,7 +68,7 @@ else{
             form.append('file',file)
             val={status:'loading'}
             render()
-            fetch('http://speechtools.herokuapp.com/',{
+            fetch('https://speechtools.herokuapp.com/',{
             method:'POST',
             body:form,
             
