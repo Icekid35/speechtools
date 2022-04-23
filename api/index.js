@@ -24,7 +24,7 @@ cluster.on('exit', (worker,code,signal)=>{
 
 
 const upload = multer({
-  dest: "uploads/img",
+ 
 })
 
 
@@ -71,7 +71,7 @@ worker.load().then(() => {
       
       spwarn()
       app.get('*',(req,res)=>{
-          res.redirect('https://speechtools.vercel.app')
+          res.redirect({'hello':'hiiii'})
       })
       
       app.post("/", upload.single("file"), (req, res) => {
