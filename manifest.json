@@ -1,0 +1,69 @@
+{
+  "name":"image converter",
+  "short_name":"image converter",
+  "start_url":"/",
+  "background_color":"#Eae8f6",
+  "theme_color":"red",
+  "display":"standalone",
+  "description":"image to text converter and image read aloud and text to speech app",
+ 
+    "icons": [
+ 
+    
+      {
+        "src": "ios/1024.png",
+        "sizes": "1024x1024"
+      } ,
+        {
+        "src":"maskable_icon.png",
+        "sizes":"16x16",
+        "type":"image/png"
+        
+              }
+    ]
+  
+,
+     "shortcuts":[
+       {
+       "name":"speech to text",
+       "description":"convert speech to text",
+       "url":"/speech-to-text",
+       "icons":[{
+         "size":"96x96",
+         "src":"speech-to-text.png"
+       }]
+     },
+       {
+       "name":"image to text",
+       "description":"convert image to text",
+       "url":"/image-to-text",
+              "icons":[{
+         "size":"96x96",
+         "src":"image-to-text.png"
+       }]
+
+     },
+     {
+       "name":"text to speech",
+       "description":"convert text to speech",
+       "url":"/text-to-speech",
+              "icons":[{
+         "size":"96x96",
+         "src":"text-to-speech.png"
+       }]
+
+     }
+,
+     {
+       "name":"image to speech",
+       "description":"convert image to speech",
+       "url":"/text-to-speech",
+              "icons":[{
+         "size":"96x96",
+         "src":"image-to-speech.png"
+       }]
+
+     }
+
+     ]
+}
