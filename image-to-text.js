@@ -30,9 +30,9 @@ let  file=e.target.file.files[0]
   
 
  const worker=Tesseract.createWorker({
-   workerPath:'node_modules/tesseract.js/dist/worker.min.js',
+   workerPath:'libs/tesseract.js/dist/worker.min.js',
 langPath: 'libs',
-corePath:'node_modules/tesseract.js-core/tesseract-core.wasm.js'
+corePath:'libs/tesseract.js-core/tesseract-core.wasm.js'
 ,
 logger:(e)=>{
   console.log(e)
