@@ -71,10 +71,10 @@ worker.load().then(() => {
     // }
    // req.file=files.file
    
-        console.log(req.file)
+        console.log(req.body.file)
 
         scheduler
-          .addJob("recognize", req.file)
+          .addJob("recognize", req.body.file)
           .then((value) => {
             // worker.terminate()
             data = value
