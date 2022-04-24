@@ -6,13 +6,14 @@
             var imagesrc
             var present=0
   function getres(fileurl){
-            var form=new FormData()
-            form.append('file',fileurl)
             val={status:'extracting'}
             render()
             fetch('/api',{
             method:'POST',
-            body:form,
+            body:JSON.stringify({file:fileurl}),
+      headers: {
+        'Content-Type': 'application/json'
+      },
             }).then((res)=>{    
               return  res.json()}).then(data=>{
               if(func_present!=present)return

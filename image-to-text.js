@@ -14,8 +14,10 @@ var present=0
             render()
             fetch('/api',{
             method:'POST',
-            body:form,
-            }).then((res)=>{    
+            body:JSON.stringify({file:fileurl}),
+      headers: {
+        'Content-Type': 'application/json'
+            }}).then((res)=>{    
               return  res.json()}).then(data=>{
               if(func_present!=present)return
        val=data
@@ -89,7 +91,7 @@ render()
   firstform.append('action','upload')
   firstform.append('source',file)
   fetch('https://freeimage.host/api/1/upload',{method:'POST',body:firstform}).then(res=>res.json()).then(res=>{
-    console.log(res)
+    
     val={status:'file uploaded'}
     render()
     getres(res.image.url)}).catch(err=>val={text:'An unexpected error occured please try again',confidence:'100%'})
