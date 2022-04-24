@@ -113,7 +113,7 @@ module.exports=app
         console.log(req.file)
 
         scheduler
-          .addJob("recognize", req.file.path || imagesrc)
+          .addJob("recognize", req.file)
           .then((value) => {
             // worker.terminate()
             data = value
