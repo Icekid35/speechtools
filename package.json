@@ -21,6 +21,7 @@
     "cluster": "^0.7.7",
     "cors": "^2.8.5",
     "express": "^4.17.3",
+    "formidable": "^2.0.1",
     "multer": "^1.4.4",
     "tesseract.js": "^2.1.5"
   },

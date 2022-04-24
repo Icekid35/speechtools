@@ -2,9 +2,9 @@ const express = require("express")
 const app = express()
 const path = require("path")
 const Tesseract = require("tesseract.js")
-const multer = require("multer")
+//const multer = require("multer")
 const cluster=require('cluster')
-
+const formidable=require('formidable')
 app.use(require('cors')())
 function startworker(){
   var worker=cluster.fork()
@@ -97,21 +97,32 @@ module.exports=app
     })
   })
 })
-      app.post("*"/*, upload.single("file")*/, (req, res) => {
-        console.log(req.file)
+      // app.post("*"/*, upload.single("file")*/, (req, res) => {
+      //   console.log(req.file)
 
-        scheduler
-          .addJob("recognize", req.file.path || imagesrc)
-          .then((value) => {
-            // worker.terminate()
-            data = value
-            res.json({
-              text: value.data.text,
-              confidence: value.data.confidence,
-            })
-          })
-      })
+      //   scheduler
+      //     .addJob("recognize", req.file.path || imagesrc)
+      //     .then((value) => {
+      //       // worker.terminate()
+      //       data = value
+      //       res.json({
+      //         text: value.data.text,
+      //         confidence: value.data.confidence,
+      //       })
+      //     })
+      // })
+app.post('*',(req,res,next)=>{
+  const form = formidable({ multiples: true });
 
+  form.parse(req, (err, fields, files) => {
+    if (err) {
+      next(err);
+      return;
+    }
+    res.json({ fields, files });
+  });
+
+})
  app.get('*',(req,res)=>{
    res.json({'hi':worker})
 })
