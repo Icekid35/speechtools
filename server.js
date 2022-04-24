@@ -61,15 +61,15 @@ worker.load().then(() => {
     worker.initialize("eng").then(() => {
       var data
       scheduler.addWorker(worker)
-            app.post("*",(req,res,next)=>{
-  const form = formidable({ multiples: true });
+            app.post("*",(req,res)=>{
+  //const form = formidable({ multiples: true });
 
-  form.parse(req, (err, fields, files) => {
-    if (err) {
-      res.json({text:'serious error occured',confidence:'102'});
+  //form.parse(req, (err, fields, files) => {
+    // if (err) {
+    //   res.json({text:'serious error occured',confidence:'102'});
       
-    }
-    req.file=files.file
+    // }
+   // req.file=files.file
    
         console.log(req.file)
 
@@ -83,9 +83,8 @@ worker.load().then(() => {
               confidence: value.data.confidence,
             })
           })
-      })
-},(req,res)=>{
-  res.send('yes')
+      //})
+     
 })
       spwarn()
       

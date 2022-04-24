@@ -7,6 +7,23 @@ var val
 var imageref
 var imagesrc
 var present=0
+  function getres(fileurl){
+            var form=new FormData()
+            form.append('file',fileurl)
+            val={status:'extracting'}
+            render()
+            fetch('/api',{
+            method:'POST',
+            body:form,
+            }).then((res)=>{    
+              return  res.json()}).then(data=>{
+              if(func_present!=present)return
+       val=data
+                        speechSynthesis.speak(new SpeechSynthesisUtterance(data.text))
+            render()
+            }).catch(err=>val={text:'An unexpected error occured please try again',confidence:'100%'})
+}
+
 function convert(e){
  present+=1
  var func_present=present
@@ -65,25 +82,21 @@ render()
     
      
 }
-     else{
-     var form=new FormData()
-     form.append('file',file)
-     val={status:'loading'}
-     render()
-     fetch('/api',{
-       method:'POST',
-     body:form,
-       
-     }).then((res)=>{     
-       return res.json()
-     }
-       ).then(data=>{
-         if(present!=present)return
-         val=data
-         if(val.text=='')val.text='no text detected'
-         render()
-       }).catch(err=>val={text:'An unexpected error occured please try again',confidence:'100%'})
+else{
+     val={status:'uploading file'}
+render()
+  var firstform=new FormData()
+  firstform.append('key','6d207e02198a847aa98d0a2a901485a5')
+  firstform.append('action','upload')
+  firstform.append('source',file)
+  fetch('https://freeimage.host/api/1/upload',{method:'POST',body:firstform}).then(res=>res.json()).then(res=>{
+    val={status:'file uploaded'}
+    render()
+    getres(res.image.url)}).catch(err=>val={text:'An unexpected error occured please try again',confidence:'100%'})
+
+  
 }
+
 }
 function App(){
   return(
