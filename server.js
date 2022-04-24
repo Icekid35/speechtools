@@ -115,7 +115,11 @@ worker.load().then(() => {
             })
           })
       })
-// app.get('*',(req,res)=>{
-//   res.json({'error':'pls visit speechtools.vercel.app'})
-// })
+      app.get('/',(req,res)=>{
+  res.sendFile(path.join(__dirname,'index.html'))
+})
+
+app.get('*',(req,res)=>{
+  res.sendFile(path.join(__dirname,'404.html'))
+})
 module.exports=app

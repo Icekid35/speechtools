@@ -2,20 +2,20 @@ node_modules
 uploads
 
 #main website files
-node_modules
+# node_modules
 
-libs
-ios
-fonts
-api
-*.html
-*.png
-*.js
-!server.js
-*.gif
-*.css
-icons.json
-manifest.json
-c
-vercel.json
+# libs
+# ios
+# fonts
+# api
+# *.html
+# *.png
+# *.js
+# !server.js
+# *.gif
+# *.css
+# icons.json
+# manifest.json
+# c
+# vercel.json
 #sw.js
