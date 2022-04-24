@@ -3,6 +3,7 @@ uploads
 
 #main website files
 libs
+ios
 fonts
 api
  *.html
@@ -14,4 +15,5 @@ api
  icons.json
  manifest.json
  c
+ vercel.json
 #sw.js
