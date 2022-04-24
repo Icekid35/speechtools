@@ -2,15 +2,15 @@ node_modules
 uploads
 
 #main website files
-#libs
+libs
 
-# *.html
-# *.png
-# *.js
-# !server.js
-# *.gif
-# *.css
-# icons.json
-# manifest.json
-# c
+ *.html
+ *.png
+ *.js
+ !servr.js
+*.gif
+ *.css
+ icons.json
+ manifest.json
+ c
 #sw.js
