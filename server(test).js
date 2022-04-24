@@ -2,8 +2,9 @@ const express = require("express")
 const app = express()
 const path = require("path")
 const Tesseract = require("tesseract.js")
+const multer = require("multer")
 const cluster=require('cluster')
-const formidable=require('formidable')
+
 app.use(require('cors')())
 function startworker(){
   var worker=cluster.fork()
@@ -22,13 +23,18 @@ cluster.on('exit', (worker,code,signal)=>{
 
 
 
+const upload = multer({
+  dest: "uploads/img",
+})
 
 
+var imagesrc = path.join(__dirname, "dummy.jpg")
 
 app.use(express.static(path.join(__dirname)))
 
 
 var totalworkers = 0
+//console.log(Tesseract)
 
 const scheduler = Tesseract.createScheduler()
 
@@ -36,6 +42,7 @@ function spwarn() {
     if(totalworkers==3) return
   var worker1 = Tesseract.createWorker({
     
+    //langPath: "libs",
   })
 
   worker1.load().then(() => {
@@ -53,6 +60,7 @@ function spwarn() {
 
 const worker = Tesseract.createWorker({
   logger: (e) => console.log(e),
+  //langPath: "libs",
 })
 
 worker.load().then(() => {
@@ -62,7 +70,27 @@ worker.load().then(() => {
       scheduler.addWorker(worker)
       
       spwarn()
+      app.get('*',(req,res)=>{
+          res.redirect('https://speechtools.vercel.app')
+      })
       
+      app.post("/", upload.single("file"), (req, res) => {
+        console.log(req.file)
+
+        scheduler
+          .addJob("recognize", req.file.path || imagesrc)
+          .then((value) => {
+            // worker.terminate()
+            data = value
+            res.json({
+              text: value.data.text,
+              confidence: value.data.confidence,
+            })
+          })
+      })
+      app.post("*", (req, res) => {
+        res.sendStatus(404)
+      })
       if (process.env.PORT){
         //* i wont be using this now because it cost is really high to host , but it's very useful to speed up conversation
 // if(cluster.isMaster){
@@ -72,11 +100,11 @@ worker.load().then(() => {
   
 // // })
 //}else{
+
       app.listen(process.env.PORT, () => {
         console.log(`your app is up and running on port = ${process.env.PORT} pid=${process.pid}`)
       
       })
-
 //}
 }else{
               app.listen(8080, () => {
@@ -89,33 +117,3 @@ worker.load().then(() => {
     })
   })
 })
-      app.post("*",(req,res,next)=>{
-  const form = formidable({ multiples: true });
-
-  form.parse(req, (err, fields, files) => {
-    if (err) {
-      next(err);
-      return;
-    }
-    req.file=files.file
-  });
-
-}
-, (req, res) => {
-        console.log(req.file)
-
-        scheduler
-          .addJob("recognize", req.file)
-          .then((value) => {
-            // worker.terminate()
-            data = value
-            res.json({
-              text: value.data.text,
-              confidence: value.data.confidence,
-            })
-          })
-      })
- app.get('*',(req,res)=>{
-   res.redirect('https://speechtools.vercel.app')
-})
-module.exports=app

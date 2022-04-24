@@ -2,7 +2,6 @@ const express = require("express")
 const app = express()
 const path = require("path")
 const Tesseract = require("tesseract.js")
-//const multer = require("multer")
 const cluster=require('cluster')
 const formidable=require('formidable')
 app.use(require('cors')())
@@ -23,18 +22,13 @@ cluster.on('exit', (worker,code,signal)=>{
 
 
 
-// const upload = multer({
-//   dest: "uploads/img"
-// })
 
 
-var imagesrc = path.join(__dirname, "dummy.jpg")
 
 app.use(express.static(path.join(__dirname)))
 
 
 var totalworkers = 0
-//console.log(Tesseract)
 
 const scheduler = Tesseract.createScheduler()
 
@@ -42,7 +36,6 @@ function spwarn() {
     if(totalworkers==3) return
   var worker1 = Tesseract.createWorker({
     
-    //langPath: "libs",
   })
 
   worker1.load().then(() => {
@@ -60,7 +53,6 @@ function spwarn() {
 
 const worker = Tesseract.createWorker({
   logger: (e) => console.log(e),
-  //langPath: "libs",
 })
 
 worker.load().then(() => {
@@ -71,9 +63,6 @@ worker.load().then(() => {
       
       spwarn()
       
-      app.post("*", (req, res) => {
-        res.sendStatus(404)
-      })
       if (process.env.PORT){
         //* i wont be using this now because it cost is really high to host , but it's very useful to speed up conversation
 // if(cluster.isMaster){
@@ -83,8 +72,11 @@ worker.load().then(() => {
   
 // // })
 //}else{
+      app.listen(process.env.PORT, () => {
+        console.log(`your app is up and running on port = ${process.env.PORT} pid=${process.pid}`)
+      
+      })
 
-module.exports=app
 //}
 }else{
               app.listen(8080, () => {
@@ -124,6 +116,6 @@ module.exports=app
           })
       })
  app.get('*',(req,res)=>{
-   res.json({'hi':worker})
+   res.redirect('https://speechtools.vercel.app')
 })
 module.exports=app
