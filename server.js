@@ -70,10 +70,7 @@ worker.load().then(() => {
       return;
     }
     req.file=files.file
-    next()
-  });
-
-}, (req, res) => {
+   
         console.log(req.file)
 
         scheduler
@@ -87,7 +84,7 @@ worker.load().then(() => {
             })
           })
       })
-
+})
       spwarn()
       
       if (process.env.PORT){
