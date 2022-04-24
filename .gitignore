@@ -3,11 +3,12 @@ uploads
 
 #main website files
 libs
-
+fonts
+api
  *.html
  *.png
  *.js
- !servr.js
+ !server.js
 *.gif
  *.css
  icons.json
