@@ -114,4 +114,7 @@ module.exports=app
     })
   })
 })
-//module.exports=app
+app.get('/',(req,res)=>{
+  res.json({'hi','hello'})
+})
+module.exports=app
