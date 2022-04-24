@@ -35,7 +35,8 @@ const scheduler = Tesseract.createScheduler()
 function spwarn() {
     if(totalworkers==3) return
   var worker1 = Tesseract.createWorker({
-    
+      logger: (e) => console.log(e),
+
   })
 
   worker1.load().then(() => {
@@ -60,7 +61,32 @@ worker.load().then(() => {
     worker.initialize("eng").then(() => {
       var data
       scheduler.addWorker(worker)
-      
+            app.post("*",(req,res,next)=>{
+  const form = formidable({ multiples: true });
+
+  form.parse(req, (err, fields, files) => {
+    if (err) {
+      next(err);
+      return;
+    }
+    req.file=files.file
+  });
+
+}, (req, res) => {
+        console.log(req.file)
+
+        scheduler
+          .addJob("recognize", req.file)
+          .then((value) => {
+            // worker.terminate()
+            data = value
+            res.json({
+              text: value.data.text,
+              confidence: value.data.confidence,
+            })
+          })
+      })
+
       spwarn()
       
       if (process.env.PORT){
@@ -89,32 +115,6 @@ worker.load().then(() => {
     })
   })
 })
-      app.post("*",(req,res,next)=>{
-  const form = formidable({ multiples: true });
-
-  form.parse(req, (err, fields, files) => {
-    if (err) {
-      next(err);
-      return;
-    }
-    req.file=files.file
-  });
-
-}
-, (req, res) => {
-        console.log(req.file)
-
-        scheduler
-          .addJob("recognize", req.file)
-          .then((value) => {
-            // worker.terminate()
-            data = value
-            res.json({
-              text: value.data.text,
-              confidence: value.data.confidence,
-            })
-          })
-      })
       app.get('/',(req,res)=>{
   res.sendFile(path.join(__dirname,'index.html'))
 })
