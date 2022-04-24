@@ -67,7 +67,7 @@ worker.load().then(() => {
   form.parse(req, (err, fields, files) => {
     if (err) {
       res.json({text:'serious error occured',confidence:'102'});
-      return;
+      
     }
     req.file=files.file
    
@@ -84,6 +84,8 @@ worker.load().then(() => {
             })
           })
       })
+},(req,res)=>{
+  res.send('yes')
 })
       spwarn()
       
