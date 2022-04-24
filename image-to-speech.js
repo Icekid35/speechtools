@@ -5,7 +5,7 @@
             var imageref
             var imagesrc
             var present=0
-              function getres(fileurl){
+  function getres(fileurl){
             var form=new FormData()
             form.append('file',fileurl)
             val={status:'extracting'}
