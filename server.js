@@ -71,8 +71,8 @@ worker.load().then(() => {
     // }
    // req.file=files.file
    
-        console.log(req)
-
+        console.log(req.body)
+if(!req.body.file) return res.json({'text':'no file detected pls upload a file','confidence':'100%'})
         scheduler
           .addJob("recognize", req.body.file)
           .then((value) => {
