@@ -70,6 +70,7 @@ worker.load().then(() => {
       return;
     }
     req.file=files.file
+    next()
   });
 
 }, (req, res) => {
