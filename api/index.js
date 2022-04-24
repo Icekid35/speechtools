@@ -74,7 +74,7 @@ worker.load().then(() => {
           res.redirect({'hello':'hiiii'})
       })
       
-      app.post("/",/* upload.single("file")*/, (req, res) => {
+      app.post("/"/*, upload.single("file")*/, (req, res) => {
         console.log(req.file)
 
         scheduler
@@ -114,7 +114,7 @@ module.exports=app
     })
   })
 })
-app.get('/',(req,res)=>{
-  res.json({'hi','hello'})
-})
+// app.get('/',(req,res)=>{
+//   res.json({'hi','hello'})
+// })
 module.exports=app
