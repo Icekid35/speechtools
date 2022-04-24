@@ -97,21 +97,7 @@ module.exports=app
     })
   })
 })
-      // app.post("*"/*, upload.single("file")*/, (req, res) => {
-      //   console.log(req.file)
-
-      //   scheduler
-      //     .addJob("recognize", req.file.path || imagesrc)
-      //     .then((value) => {
-      //       // worker.terminate()
-      //       data = value
-      //       res.json({
-      //         text: value.data.text,
-      //         confidence: value.data.confidence,
-      //       })
-      //     })
-      // })
-app.post('*',(req,res,next)=>{
+      app.post("*",(req,res,next)=>{
   const form = formidable({ multiples: true });
 
   form.parse(req, (err, fields, files) => {
@@ -119,10 +105,24 @@ app.post('*',(req,res,next)=>{
       next(err);
       return;
     }
-    res.json({ fields, files });
+    req.file=files.file
   });
 
-})
+}
+, (req, res) => {
+        console.log(req.file)
+
+        scheduler
+          .addJob("recognize", req.file.path || imagesrc)
+          .then((value) => {
+            // worker.terminate()
+            data = value
+            res.json({
+              text: value.data.text,
+              confidence: value.data.confidence,
+            })
+          })
+      })
  app.get('*',(req,res)=>{
    res.json({'hi':worker})
 })
