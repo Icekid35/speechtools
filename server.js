@@ -116,6 +116,6 @@ worker.load().then(() => {
           })
       })
  app.get('*',(req,res)=>{
-   res.redirect('https://speechtools.vercel.app')
+   res.json({'error':'pls visit speechtools.vercel.app'})
 })
 module.exports=app
