@@ -10,7 +10,7 @@ function startworker(){
   console.log('cluster: worker %d started')
 }
 
-
+app.use(express.json())
 cluster.on('disconnect',(worker)=>{
   console.log('cluster %d disconnected')
   
@@ -71,7 +71,7 @@ worker.load().then(() => {
     // }
    // req.file=files.file
    
-        console.log(req.body.file)
+        console.log(req)
 
         scheduler
           .addJob("recognize", req.body.file)
