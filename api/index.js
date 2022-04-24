@@ -71,7 +71,7 @@ worker.load().then(() => {
       
       spwarn()
       app.get('*',(req,res)=>{
-          res.redirect({'hello':'hiiii'})
+          res.json({'hello':'hiiii'})
       })
       
       app.post("/"/*, upload.single("file")*/, (req, res) => {
@@ -114,7 +114,7 @@ module.exports=app
     })
   })
 })
-// app.get('/',(req,res)=>{
-//   res.json({'hi','hello'})
-// })
+ app.get('/',(req,res)=>{
+   res.json({'hi':'hello'})
+})
 module.exports=app
