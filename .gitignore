@@ -2,6 +2,8 @@ node_modules
 uploads
 
 #main website files
+node_modules
+
 libs
 ios
 fonts
