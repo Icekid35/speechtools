@@ -8,8 +8,6 @@ var imageref
 var imagesrc
 var present=0
   function getres(fileurl){
-            var form=new FormData()
-            form.append('file',fileurl)
             val={status:'extracting'}
             render()
             fetch('/api',{
@@ -17,7 +15,9 @@ var present=0
             body:JSON.stringify({file:fileurl}),
       headers: {
         'Content-Type': 'application/json'
-            }}).then((res)=>{    
+            }
+              
+            }).then((res)=>{    
               return  res.json()}).then(data=>{
               if(func_present!=present)return
        val=data
@@ -90,7 +90,13 @@ render()
   firstform.append('key','6d207e02198a847aa98d0a2a901485a5')
   firstform.append('action','upload')
   firstform.append('source',file)
-  fetch('https://freeimage.host/api/1/upload',{method:'POST',body:firstform}).then(res=>res.json()).then(res=>{
+  fetch('https://freeimage.host/api/1/upload',{
+    method:'POST',
+    body:firstform,
+    headers:{
+      "Access-Control-Allow-Origin": '*'
+    }
+  }).then(res=>res.json()).then(res=>{
     
     val={status:'file uploaded'}
     render()
