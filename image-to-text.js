@@ -94,7 +94,8 @@ render()
     method:'POST',
     body:firstform,
     headers:{
-      "Access-Control-Allow-Origin": '*'
+      'Content-Type':  'application/json',
+
     }
   }).then(res=>res.json()).then(res=>{
     
