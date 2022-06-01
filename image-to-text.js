@@ -16,7 +16,7 @@ var present=0
       headers: {
         'Content-Type': 'application/json',
         'mode':'no-cors',
-        'Access-Control-Allow-Origin', '*'
+        'Access-Control-Allow-Origin': '*'
         
             }
               
