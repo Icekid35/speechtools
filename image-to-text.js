@@ -93,11 +93,13 @@ render()
   firstform.append('key','6d207e02198a847aa98d0a2a901485a5')
   firstform.append('action','upload')
   firstform.append('source',file)
-  fetch('https://freeimage.host/api/1/upload',{
+  fetch('http://cors-anywhere.herokuapp.com/https://freeimage.host/api/1/upload',{
     method:'POST',
     body:firstform,
     headers:{
-      'Content-Type':  'application/json',
+    'Content-Type': 'application/json',
+        'mode':'no-cors',
+        'Access-Control-Allow-Origin': '*'
 
     }
   }).then(res=>res.json()).then(res=>{
