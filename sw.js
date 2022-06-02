@@ -3,7 +3,7 @@ self.addEventListener('install',e=>{
     caches.open('static').then(cache=>{
      return cache.addAll(['/favicon.png',
      '/',
-       '/home.js',
+  /*     '/home.js',
      '/manifest.json',
      '/index.html',
      '/text-to-speech.html',
@@ -33,7 +33,7 @@ self.addEventListener('install',e=>{
        
        'speech-to-text.js',
 'speech-to-text.html',
-'libs/tesseract.js-core/tesseract-core.wasm.js'
+'libs/tesseract.js-core/tesseract-core.wasm.js'*/
      ]) 
     })
     )
