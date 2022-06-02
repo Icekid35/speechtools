@@ -55,10 +55,10 @@ self.addEventListener('install',e=>{
   })
   }
 }
-self.addEventListener('fetch',e=>{
+self.addEventListener('fetch',async (e)=>{
   e.respondWith(
    caches.match(e.request).then(response=>{
-     return response || fetch(e.req) /*fetchAndCache(e.request)*/
+     return response || await fetch(e.request) /*fetchAndCache(e.request)*/
      }) 
     )
 })
