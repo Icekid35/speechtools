@@ -58,7 +58,7 @@ self.addEventListener('install',e=>{
 self.addEventListener('fetch',e=>{
   e.respondWith(
    caches.match(e.request).then(response=>{
-     return response || fetchAndCache(e.request)
+     return response || fetch(e.req) /*fetchAndCache(e.request)*/
      }) 
     )
 })
