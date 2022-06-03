@@ -1,9 +1,9 @@
-self.addEventListener('install',e=>{
+/*self.addEventListener('install',e=>{
   e.waitUntil(
     caches.open('static').then(cache=>{
      return cache.addAll(['/favicon.png',
      '/',
-  /*     '/home.js',
+     '/home.js',
      '/manifest.json',
      '/index.html',
      '/text-to-speech.html',
@@ -33,7 +33,7 @@ self.addEventListener('install',e=>{
        
        'speech-to-text.js',
 'speech-to-text.html',
-'libs/tesseract.js-core/tesseract-core.wasm.js'*/
+'libs/tesseract.js-core/tesseract-core.wasm.js'
      ]) 
     })
     )
@@ -61,4 +61,4 @@ self.addEventListener('fetch',(e)=>{
      return response ||  fetchAndCache(e.request)
      }) 
     )
-})
+})*/
