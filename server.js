@@ -2,23 +2,11 @@ const express = require("express")
 const app = express()
 const path = require("path")
 const Tesseract = require("tesseract.js")
-const cluster=require('cluster')
-const formidable=require('formidable')
+const fs=require('fs')
+const multer=require('multer')
+const upload=multer({dest:'upload/'})
 app.use(require('cors')())
-function startworker(){
-  var worker=cluster.fork()
-  console.log('cluster: worker %d started')
-}
- 
 app.use(express.json())
-cluster.on('disconnect',(worker)=>{
-  console.log('cluster %d disconnected')
-  
-})
-cluster.on('exit', (worker,code,signal)=>{
-  console.log('cluster exit restarting worker')
-  startworker()
-})
 
 
 
@@ -52,29 +40,15 @@ function spwarn() {
   })
 }
 
-const worker = Tesseract.createWorker({
-  logger: (e) => console.log(e),
-})
-
-worker.load().then(() => {
-  worker.loadLanguage("eng").then(() => {
-    worker.initialize("eng").then(() => {
+spwarn()
       var data
-      scheduler.addWorker(worker)
-            app.post("*",(req,res)=>{
-  //const form = formidable({ multiples: true });
-
-  //form.parse(req, (err, fields, files) => {
-    // if (err) {
-    //   res.json({text:'serious error occured',confidence:'102'});
-      
-    // }
-   // req.file=files.file
-   
-        console.log(req.body)
-if(!req.body.file) return res.json({'text':'no file detected pls upload a file','confidence':'100%'})
+    
+            app.post("*",upload.single('file'),(req,res)=>{
+              
+        console.log(req.file)
+if(!req.file) return res.json({'text':'no file detected pls upload a file','confidence':'100%'})
         scheduler
-          .addJob("recognize", req.body.file)
+          .addJob("recognize", req.file.path)
           .then((value) => {
             // worker.terminate()
             data = value
@@ -82,27 +56,22 @@ if(!req.body.file) return res.json({'text':'no file detected pls upload a file',
               text: value.data.text,
               confidence: value.data.confidence,
             })
+            fs.unlink(path.join(__dirname,req.file.path),(err)=>{
+              console.log(err)
+            })
           })
       //})
      
 })
-      spwarn()
+      //spwarn()
       
       if (process.env.PORT){
-        //* i wont be using this now because it cost is really high to host , but it's very useful to speed up conversation
-// if(cluster.isMaster){
-  
-// // require('os').cpus().forEach(function(){
-// //   startworker()
-  
-// // })
-//}else{
       app.listen(process.env.PORT, () => {
         console.log(`your app is up and running on port = ${process.env.PORT} pid=${process.pid}`)
       
       })
 
-//}
+
 }else{
               app.listen(8080, () => {
         console.log(`your app is up and running on port  8080`)
@@ -111,9 +80,7 @@ if(!req.body.file) return res.json({'text':'no file detected pls upload a file',
 
 
 }
-    })
-  })
-})
+
       app.get('/',(req,res)=>{
   res.sendFile(path.join(__dirname,'index.html'))
 })
@@ -121,4 +88,4 @@ if(!req.body.file) return res.json({'text':'no file detected pls upload a file',
 app.get('*',(req,res)=>{
   res.sendFile(path.join(__dirname,'404.html'))
 })
-module.exports=app
+//module.exports=app

@@ -1,4 +1,4 @@
-/*self.addEventListener('install',e=>{
+self.addEventListener('install',e=>{
   e.waitUntil(
     caches.open('static').then(cache=>{
      return cache.addAll(['/favicon.png',
@@ -61,4 +61,4 @@ self.addEventListener('fetch',(e)=>{
      return response ||  fetchAndCache(e.request)
      }) 
     )
-})*/
+})
