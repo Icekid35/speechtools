@@ -31,7 +31,7 @@ it ustilizes the following apis:
 * express.js
 * multer.js
 * tesseract.js
-* cluster
+
 
 
 
@@ -55,7 +55,8 @@ npm start
 The app will be listening on port `8080`
 
 # Preview
-you can visit the [live demo](speechtools.vercel.app)
+* you can visit the  [https://speechtools.vercel.app](https://speechtools.vercel.app) for pwa version
+* **for working version visit [https://speechtools.herokuapp.com](https://speechtools.herokuapp.com)**
 ![site preview](preview.png)
 > Cool loading Feature
 ![loading](loadingpreview.png)
