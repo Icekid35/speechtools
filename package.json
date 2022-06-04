@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "server.js",
   "scripts": {
-    "start": "forever start -c nodemon server.js",
+    "start": "forever start -c nodemon server.js --trace-warning",
     "test": "babel raw --out-dir .  --presets @babel/preset-react "
   },
   "repository": {
