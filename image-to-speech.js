@@ -100,7 +100,16 @@ function convert(e) {
       status: 'uploading file'
     };
     render();
-    getres(file);
+    var options = {
+      maxSizeMB: 1,
+      maxWidthOrHeight: 1920,
+      useWebWorker: true
+    };
+    imageCompression(file, options).then(cfile => {
+      getres(cfile);
+    }).catch(err => {
+      alert('unexpected error occured please try again');
+    });
   }
 }
 
