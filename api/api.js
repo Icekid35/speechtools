@@ -45,13 +45,13 @@ spwarn()
     
             app.post("*",upload.single('file'),(req,res)=>{
               
-        
+        console.log(req.file)
 if(!req.file) return res.json({'text':'no file detected pls upload a file','confidence':'100%'})
         scheduler
           .addJob("recognize", req.file.path)
           .then((value) => {
             // worker.terminate()
-          
+            data = value
             res.json({
               text: value.data.text,
               confidence: value.data.confidence,
@@ -88,4 +88,4 @@ if(!req.file) return res.json({'text':'no file detected pls upload a file','conf
 app.get('*',(req,res)=>{
   res.sendFile(path.join(__dirname,'404.html'))
 })
-//module.exports=app
+module.exports=app
