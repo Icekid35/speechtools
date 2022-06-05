@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "server.js",
   "scripts": {
-    "start": "node server.js ",
+    "start": "pm2 start  server.js --watch --max-memory-restart 550M",
     "test": "babel raw --out-dir .  --presets @babel/preset-react "
   },
   "repository": {
@@ -21,9 +21,8 @@
     "cluster": "^0.7.7",
     "cors": "^2.8.5",
     "express": "^4.17.3",
-    "forever": "^4.0.3",
     "multer": "^1.4.4",
-    "nodemon": "^2.0.16",
+    "pm2": "^5.2.0",
     "tesseract.js": "^2.1.5"
   },
   "description": "",
