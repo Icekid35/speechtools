@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "main": "server.js",
   "scripts": {
-    "start": "npx forever@3.0.4 start server.js",
+    "preinstall":"npm i -g pm2",
+    "start": "pm2 start server.js",
     "test": "babel raw --out-dir .  --presets @babel/preset-react "
   },
   "repository": {
