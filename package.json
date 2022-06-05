@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "server.js",
   "scripts": {
-    "start": "nodemon server.js ",
+    "start": "npx pm2 start server.js --watch",
     "test": "babel raw --out-dir .  --presets @babel/preset-react "
   },
   "repository": {
